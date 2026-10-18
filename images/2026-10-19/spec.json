@@ -1,0 +1,17 @@
+[
+ {"file":"2026-10-19_vinyl-billion","type":"stat","kicker":"INDUSTRY","big":"$1.04B","size":250,
+  "line":"US vinyl sales in 2025. The first billion-dollar year since 1983, and the 19th straight year of growth.","src":"Source: RIAA via Stereogum"},
+ {"file":"2026-10-20_rsd-black-friday","type":"news","kicker":"RECORD STORE DAY","head":"Black Friday is Nov. 27","size":150,
+  "line":"The RSD Black Friday exclusives are out. Live sets, reissues and first-time pressings, only at independent stores.","src":"Source: Stereogum"},
+ {"file":"2026-10-21_fat-elephant","type":"news","kicker":"STORE NEWS","head":"The Beat's crates are back","size":140,
+  "line":"Fat Elephant Records opened a second shop in Folsom, CA, stocked with leftover inventory from Sacramento's The Beat. Records run $3 to $10.","src":"Source: Hoodline"},
+ {"file":"2026-10-22_vinyl-cafe","type":"news","kicker":"STORE NEWS","head":"New home on Main Street","size":150,
+  "line":"The Vinyl Café in Longmont, CO moved to 704 Main Street to keep up with demand from collectors.","src":"Source: Boulder Weekly"},
+ {"file":"2026-10-23_new-releases","type":"releases","kicker":"NEW RELEASE FRIDAY","head":"Out this week",
+  "items":[["Michael Kiwanuka","FUDGE · 2LP"],["Tony Iommi","From the Dark · 2LP"],["Anderson .Paak & Cordae","Heavy Is the Crown"],["Tom Morello","Everyone Gets Everything They Want"],["Shabazz Palaces","It's a Style Sport"],["Amy Winehouse","Back to Black · 20th Anniversary 3LP"]],
+  "src":"Release dates: Pause & Play"},
+ {"file":"2026-10-24_dig-local","type":"prompt","kicker":"SHOP LOCAL","head":"Go dig this weekend.","size":180,
+  "line":"Tell us your local record store. We'll share the list.","src":""},
+ {"file":"2026-10-25_cds-up","type":"stat","kicker":"WORTH KNOWING","big":"CDs +16%","size":210,
+  "line":"US CD sales in the first half of 2026: 16.3 million units. Vinyl grew 2.3%. Don't sleep on the CD bins.","src":"Source: Luminate via DJ Mag"}
+]
