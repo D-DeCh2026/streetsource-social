@@ -1,0 +1,62 @@
+name: Render social cards
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 minutes
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["renderer/**", ".github/workflows/render.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check for new cards
+        id: check
+        run: |
+          python - <<'EOF' >> "$GITHUB_OUTPUT"
+          import csv, io, os, urllib.request
+          from pathlib import Path
+          sid = "1dT-3jIGWm3klZ5Kdbz3VGx5LCvZLEB3p_PDZowcfS4E"
+          raw = urllib.request.urlopen(f"https://docs.google.com/spreadsheets/d/{sid}/export?format=csv&gid=0", timeout=60).read().decode()
+          rows = list(csv.reader(io.StringIO(raw)))[1:] if not raw.lstrip().startswith("<") else []
+          missing = [r[0] for r in rows if r and r[0].strip().endswith(".png") and not Path(r[0].strip()).exists()]
+          print("needed=" + ("true" if missing or raw.lstrip().startswith("<") else "false"))
+          EOF
+
+      - name: Install renderer
+        if: steps.check.outputs.needed == 'true'
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+          mkdir -p "$RUNNER_TEMP/fonts" && cd "$RUNNER_TEMP/fonts"
+          npm pack @fontsource/barlow-condensed @fontsource/archivo
+          for f in *.tgz; do tar xzf "$f" --one-top-level; done
+
+      - name: Render
+        if: steps.check.outputs.needed == 'true'
+        run: python renderer/render_sheet.py "$RUNNER_TEMP"
+
+      - name: Commit images
+        if: steps.check.outputs.needed == 'true'
+        run: |
+          git config user.name "streetsource-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add images
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "Render social cards"
+          git push
