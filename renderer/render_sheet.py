@@ -16,7 +16,10 @@ URL = os.environ.get("SPEC_CSV_URL", f"https://docs.google.com/spreadsheets/d/{S
 FONTS_BASE = sys.argv[1]
 ROOT = Path.cwd()
 
-raw = urllib.request.urlopen(URL, timeout=60).read().decode("utf-8")
+try:
+    raw = urllib.request.urlopen(URL, timeout=60).read().decode("utf-8")
+except Exception as e:
+    raw = "<" + str(e)
 if raw.lstrip().startswith("<"):
     sys.exit("The Image Specs sheet isn't readable. Set its sharing to 'Anyone with the link: Viewer'.")
 
