@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["renderer/**", ".github/workflows/render.yml"]
+    paths: ["renderer/**", ".github/workflows/render.yml", "README.md"]
 
 permissions:
   contents: write

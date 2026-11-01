@@ -6,3 +6,5 @@ Images and the card renderer for Street Source's social posts.
 - `images/<week-start>/` holds each week's cards and the spec they were made from.
 
 Images are public so the posting automation can fetch them by URL.
+
+The Action runs every 30 minutes, and on any change to renderer/.
