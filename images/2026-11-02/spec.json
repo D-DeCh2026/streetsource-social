@@ -1,0 +1,106 @@
+[
+ {
+  "type": "stat",
+  "kicker": "US VINYL IN 2026",
+  "big": "39.5%",
+  "line": "Independent record stores' share of US vinyl album sales this year. The biggest of any channel.",
+  "src": "Source: Luminate, YTD through Sept. 24, 2026",
+  "size": 240,
+  "file": "2026-11-02_indie-vinyl-share-1"
+ },
+ {
+  "type": "stat",
+  "kicker": "US VINYL IN 2026",
+  "big": "12.38M",
+  "line": "Vinyl albums sold at independent stores through Sept. 24.",
+  "src": "Source: Luminate (modeled indie total)",
+  "size": 230,
+  "file": "2026-11-02_indie-vinyl-share-2"
+ },
+ {
+  "type": "news",
+  "kicker": "US VINYL IN 2026",
+  "head": "Everyone else",
+  "line": "Mass market: 7.39M. E-commerce: 6.76M. Direct to consumer: 4.06M.",
+  "src": "Source: Luminate, YTD through Sept. 24, 2026",
+  "size": 140,
+  "file": "2026-11-02_indie-vinyl-share-3"
+ },
+ {
+  "type": "news",
+  "kicker": "US VINYL IN 2026",
+  "head": "Two of every five",
+  "line": "That's roughly how many vinyl albums sold in the US this year came from an independent shop.",
+  "src": "Source: Luminate",
+  "size": 140,
+  "file": "2026-11-02_indie-vinyl-share-4"
+ },
+ {
+  "type": "prompt",
+  "kicker": "COUNTER LIFE",
+  "head": "\"My dad had this one.\"",
+  "line": "Every single day. About every single record.",
+  "size": 170,
+  "file": "2026-11-03_my-dad"
+ },
+ {
+  "type": "news",
+  "kicker": "STORE SPOTLIGHT",
+  "head": "10 years and a new home",
+  "line": "Curious Collections in Bryan, TX turned 10 in October and now lives at The Record Garage.",
+  "src": "Source: curiouscollectionstx.com",
+  "size": 135,
+  "file": "2026-11-04_curious-collections"
+ },
+ {
+  "type": "news",
+  "kicker": "NEW FORMAT",
+  "head": "A physical album with no grooves",
+  "line": "Since Oct. 2, Luminate has tracked Smart Media Albums in the US and Canada.",
+  "src": "Source: Luminate",
+  "size": 130,
+  "file": "2026-11-05_smart-media-1"
+ },
+ {
+  "type": "news",
+  "kicker": "NEW FORMAT",
+  "head": "What it is",
+  "line": "A physical item with a QR code or NFC chip. Activate it and the album unlocks in an app or on a website.",
+  "src": "Source: Luminate",
+  "size": 140,
+  "file": "2026-11-05_smart-media-2"
+ },
+ {
+  "type": "news",
+  "kicker": "NEW FORMAT",
+  "head": "First since the CD",
+  "line": "It's the first new physical format Luminate has added since CDs. Eligible sales count toward Billboard's charts.",
+  "src": "Source: Luminate",
+  "size": 140,
+  "file": "2026-11-05_smart-media-3"
+ },
+ {
+  "type": "prompt",
+  "kicker": "NEW FORMAT",
+  "head": "Would you rack one?",
+  "line": "And which bin would it even go in?",
+  "size": 170,
+  "file": "2026-11-05_smart-media-4"
+ },
+ {
+  "type": "prompt",
+  "kicker": "SHOP LOCAL",
+  "head": "Who sold you on it?",
+  "line": "Name a record you only own because someone behind the counter told you to buy it.",
+  "size": 170,
+  "file": "2026-11-07_who-sold-you"
+ },
+ {
+  "type": "news",
+  "kicker": "JOB DESCRIPTION",
+  "head": "Record store employee",
+  "line": "40% moving boxes. 30% pricing. 20% explaining what a variant is. 10% playing the good stuff loud.",
+  "size": 135,
+  "file": "2026-11-08_job-description"
+ }
+]
