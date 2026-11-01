@@ -24,11 +24,12 @@ if raw.lstrip().startswith("<"):
     sys.exit("The Image Specs sheet isn't readable. Set its sharing to 'Anyone with the link: Viewer'.")
 
 todo = defaultdict(list)
+reels = []
 for i, row in enumerate(csv.reader(io.StringIO(raw))):
     if i == 0 or len(row) < 2 or not row[0].strip() or not row[1].strip():
         continue
     path = Path(row[0].strip())
-    if path.suffix != ".png" or path.parts[0] != "images" or ".." in path.parts:
+    if path.suffix not in (".png", ".mp4") or path.parts[0] != "images" or ".." in path.parts:
         print(f"skip row {i+1}: bad path {path}"); continue
     if (ROOT / path).exists():
         continue
@@ -36,11 +37,23 @@ for i, row in enumerate(csv.reader(io.StringIO(raw))):
         spec = json.loads(row[1])
     except json.JSONDecodeError as e:
         print(f"skip row {i+1}: bad JSON ({e})"); continue
+    if path.suffix == ".mp4" or spec.get("type") == "reel":
+        reels.append((path, spec))
+        continue
     spec["file"] = path.stem
     todo[path.parent].append(spec)
 
-if not todo:
+if not todo and not reels:
     print("nothing to render"); sys.exit(0)
+
+failed = 0
+for path, spec in reels:
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+        json.dump(spec, f)
+    r = subprocess.run([sys.executable, str(ROOT / "renderer/make_reel.py"), FONTS_BASE, f.name, str(ROOT / path)])
+    if r.returncode:
+        failed += 1
+        print(f"::warning::Reel {path} failed; it will be retried on the next run.")
 
 for folder, specs in todo.items():
     out = ROOT / folder
@@ -56,3 +69,6 @@ for folder, specs in todo.items():
     names = {s["file"] for s in specs}
     rec.write_text(json.dumps([s for s in existing if s.get("file") not in names] + specs, indent=1))
     print(f"rendered {len(specs)} in {folder}")
+
+if failed:
+    sys.exit(1)

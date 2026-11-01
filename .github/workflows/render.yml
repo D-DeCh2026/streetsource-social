@@ -41,7 +41,7 @@ jobs:
               print("::error::Can't read the Street Source Image Specs sheet. Set its sharing to Anyone with the link: Viewer.", file=sys.stderr)
               sys.exit(1)
           rows = list(csv.reader(io.StringIO(raw)))[1:]
-          missing = [r[0] for r in rows if r and r[0].strip().endswith(".png") and not Path(r[0].strip()).exists()]
+          missing = [r[0] for r in rows if r and r[0].strip().endswith((".png", ".mp4")) and not Path(r[0].strip()).exists()]
           print("needed=" + ("true" if missing else "false"))
           EOF
 
@@ -50,12 +50,15 @@ jobs:
         run: |
           pip install playwright pillow
           python -m playwright install --with-deps chromium
+          sudo apt-get install -y -qq ffmpeg >/dev/null
           mkdir -p "$RUNNER_TEMP/fonts" && cd "$RUNNER_TEMP/fonts"
           npm pack @fontsource/barlow-condensed @fontsource/archivo
           for f in *.tgz; do tar xzf "$f" --one-top-level; done
 
       - name: Render
+        id: render
         if: steps.check.outputs.needed == 'true'
+        continue-on-error: true
         run: python renderer/render_sheet.py "$RUNNER_TEMP"
 
       - name: Commit images
@@ -67,3 +70,7 @@ jobs:
           git diff --cached --quiet && echo "no changes" && exit 0
           git commit -m "Render social cards"
           git push
+
+      - name: Report render problems
+        if: steps.render.outcome == 'failure'
+        run: exit 1
