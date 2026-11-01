@@ -1,0 +1,10 @@
+[
+ {
+  "type": "prompt",
+  "kicker": "SETUP CHECK",
+  "head": "Images are working.",
+  "line": "If you can see this, GitHub is rendering cards from the sheet.",
+  "size": 170,
+  "file": "setup-check"
+ }
+]
