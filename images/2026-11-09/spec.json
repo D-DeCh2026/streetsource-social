@@ -1,0 +1,106 @@
+[
+ {
+  "type": "news",
+  "kicker": "US INDIE STORES",
+  "head": "The Black Parade tops indie stores",
+  "line": "A 2006 album was the top seller at US independent record stores in the last week of October.",
+  "src": "Source: Luminate, week ending Oct. 29, 2026",
+  "size": 140,
+  "file": "2026-11-09_black-parade-1"
+ },
+ {
+  "type": "stat",
+  "kicker": "US INDIE STORES",
+  "big": "6,515",
+  "line": "Copies of The Black Parade sold at US indie stores that week. 6,391 of them were bought in person.",
+  "src": "Source: Luminate, week ending Oct. 29, 2026",
+  "size": 250,
+  "file": "2026-11-09_black-parade-2"
+ },
+ {
+  "type": "stat",
+  "kicker": "US INDIE STORES",
+  "big": "432K",
+  "line": "Physical albums sold at US indie stores that week, up 2.9% from the same week last year.",
+  "src": "Source: Luminate (modeled indie total)",
+  "size": 250,
+  "file": "2026-11-09_black-parade-3"
+ },
+ {
+  "type": "news",
+  "kicker": "US INDIE STORES",
+  "head": "Still marching in",
+  "line": "Almost every indie-store copy of that No. 1 went out over a counter, not through a website.",
+  "src": "Source: Luminate",
+  "size": 140,
+  "file": "2026-11-09_black-parade-4"
+ },
+ {
+  "type": "prompt",
+  "kicker": "COUNTER LIFE",
+  "head": "\"Is this the original pressing?\"",
+  "line": "It's shrink-wrapped and has a barcode. No.",
+  "size": 160,
+  "file": "2026-11-10_original-pressing"
+ },
+ {
+  "type": "news",
+  "kicker": "STORE SPOTLIGHT",
+  "head": "New in Columbia Falls",
+  "line": "Bad Rock Music just opened on Nucleus Ave. in Columbia Falls, MT, with new and used records.",
+  "src": "Source: badrockmusic.com",
+  "size": 140,
+  "file": "2026-11-11_bad-rock-music"
+ },
+ {
+  "type": "news",
+  "kicker": "RECORD STORE LAUNCH",
+  "head": "374 listening parties",
+  "line": "Record store listening parties for Fontaines D.C.'s Dopamine Chamber, across 38 countries.",
+  "src": "Source: Music Week, Oct. 29, 2026",
+  "size": 140,
+  "file": "2026-11-12_listening-parties-1"
+ },
+ {
+  "type": "stat",
+  "kicker": "RECORD STORE LAUNCH",
+  "big": "13,000",
+  "line": "Vinyl copies in its first US week, out of 18,000 album sales.",
+  "src": "Source: Billboard, Oct. 29, 2026 (Luminate data)",
+  "size": 230,
+  "file": "2026-11-12_listening-parties-2"
+ },
+ {
+  "type": "news",
+  "kicker": "RECORD STORE LAUNCH",
+  "head": "No. 1 at indie stores",
+  "line": "It opened at No. 1 on the US Vinyl Albums and Indie Store Album Sales charts.",
+  "src": "Source: Music Week, Oct. 29, 2026",
+  "size": 140,
+  "file": "2026-11-12_listening-parties-3"
+ },
+ {
+  "type": "news",
+  "kicker": "RECORD STORE LAUNCH",
+  "head": "Start it at the shop",
+  "line": "Launch a record where the fans already hang out, and they show up for it.",
+  "size": 140,
+  "file": "2026-11-12_listening-parties-4"
+ },
+ {
+  "type": "prompt",
+  "kicker": "THIS OR THAT",
+  "head": "New arrivals or the dollar bin?",
+  "line": "You walk in. Which one gets you first?",
+  "size": 170,
+  "file": "2026-11-14_new-or-dollar"
+ },
+ {
+  "type": "prompt",
+  "kicker": "RELEASE DAY",
+  "head": "10:01. 10:04. 10:05.",
+  "line": "Restock the bin. Bin is empty. \"Are you getting more?\"",
+  "size": 170,
+  "file": "2026-11-15_release-day"
+ }
+]
