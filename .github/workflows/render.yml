@@ -42,7 +42,8 @@ jobs:
               sys.exit(1)
           rows = list(csv.reader(io.StringIO(raw)))[1:]
           missing = [r[0] for r in rows if r and r[0].strip().endswith((".png", ".mp4")) and not Path(r[0].strip()).exists()]
-          print("needed=" + ("true" if missing else "false"))
+          no_jpg = [p for p in Path("images").rglob("*.png") if not p.with_suffix(".jpg").exists()]
+          print("needed=" + ("true" if missing or no_jpg else "false"))
           EOF
 
       - name: Install renderer

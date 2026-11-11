@@ -43,7 +43,21 @@ for i, row in enumerate(csv.reader(io.StringIO(raw))):
     spec["file"] = path.stem
     todo[path.parent].append(spec)
 
+def jpg_copies():
+    """Instagram only accepts JPEGs, so every card also gets a .jpg twin."""
+    from PIL import Image
+    n = 0
+    for png in sorted((ROOT / "images").rglob("*.png")):
+        jpg = png.with_suffix(".jpg")
+        if not jpg.exists():
+            Image.open(png).convert("RGB").save(jpg, "JPEG", quality=92, optimize=True)
+            n += 1
+    if n:
+        print(f"made {n} JPG copies")
+
+
 if not todo and not reels:
+    jpg_copies()
     print("nothing to render"); sys.exit(0)
 
 failed = 0
@@ -70,5 +84,6 @@ for folder, specs in todo.items():
     rec.write_text(json.dumps([s for s in existing if s.get("file") not in names] + specs, indent=1))
     print(f"rendered {len(specs)} in {folder}")
 
+jpg_copies()
 if failed:
     sys.exit(1)
