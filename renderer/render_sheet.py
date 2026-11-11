@@ -44,14 +44,24 @@ for i, row in enumerate(csv.reader(io.StringIO(raw))):
     todo[path.parent].append(spec)
 
 def jpg_copies():
-    """Instagram only accepts JPEGs, so every card also gets a .jpg twin."""
+    """Instagram's API only takes JPEGs between 4:5 and 1.91:1, and the cards are 3:4.
+    So every card also gets a 1080x1350 .jpg twin: the card scaled to fit, with the side
+    margins filled in the card's own background color (which looks identical)."""
     from PIL import Image
     n = 0
     for png in sorted((ROOT / "images").rglob("*.png")):
         jpg = png.with_suffix(".jpg")
-        if not jpg.exists():
-            Image.open(png).convert("RGB").save(jpg, "JPEG", quality=92, optimize=True)
-            n += 1
+        if jpg.exists():
+            with Image.open(jpg) as j:
+                if j.size == (1080, 1350):
+                    continue
+        im = Image.open(png).convert("RGB")
+        scale = 1350 / im.height
+        fit = im.resize((round(im.width * scale), 1350), Image.LANCZOS)
+        canvas = Image.new("RGB", (1080, 1350), im.getpixel((2, 2)))
+        canvas.paste(fit, ((1080 - fit.width) // 2, 0))
+        canvas.save(jpg, "JPEG", quality=92, optimize=True)
+        n += 1
     if n:
         print(f"made {n} JPG copies")
 

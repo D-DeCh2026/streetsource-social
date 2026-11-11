@@ -42,7 +42,16 @@ jobs:
               sys.exit(1)
           rows = list(csv.reader(io.StringIO(raw)))[1:]
           missing = [r[0] for r in rows if r and r[0].strip().endswith((".png", ".mp4")) and not Path(r[0].strip()).exists()]
-          no_jpg = [p for p in Path("images").rglob("*.png") if not p.with_suffix(".jpg").exists()]
+          import struct
+          def jpg_ok(j):
+              if not j.exists(): return False
+              b = j.read_bytes(); i = 2
+              while i < len(b):
+                  m, size = b[i+1], struct.unpack(">H", b[i+2:i+4])[0]
+                  if m in (0xC0, 0xC2): return struct.unpack(">HH", b[i+5:i+9]) == (1350, 1080)
+                  i += 2 + size
+              return False
+          no_jpg = [p for p in Path("images").rglob("*.png") if not jpg_ok(p.with_suffix(".jpg"))]
           print("needed=" + ("true" if missing or no_jpg else "false"))
           EOF
 
